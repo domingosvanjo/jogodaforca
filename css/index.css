@@ -1,0 +1,99 @@
+ .botao{
+    border-radius: 24px;
+    margin: 0 auto;
+    flex-grow: 1;
+    display: block;
+    margin-top: 110px;
+    
+    
+    border: 1px solid #0a66d6;
+    box-sizing: border-box;
+       
+    justify-content: center;
+    width: 317px;
+    height: 105px;
+    
+}
+
+#inJogo{
+    background: #0A3871;
+    color: white;
+    order: 0;
+    font-size: medium;
+    right: 30%;
+    left: 0%;
+}
+#novPalavra{
+    background: #D8DFE8;
+    color: #0A3871;
+    order: 1;
+    right: 0%;
+    left: 30%;
+}
+
+.botoes{
+    margin-top: 10px;
+    width: 332px;
+    height: 67px;
+    position: absolute; 
+    align-items: flex-start;
+    display:inline;
+    gap: 8px;
+    top: 85%;
+    bottom: 0%;
+    
+}
+
+.centralizar{
+    text-align-last: center;    
+}
+
+#rodape{
+    clear: both;
+    font-size: 15px;
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    padding-top: 50px;
+}
+
+#alura{
+    position: absolute;
+    top: 3%;
+    bottom: 0%;
+}
+
+.invisivel{
+    display: none;
+}
+
+.centrTudo{
+    text-align: center;
+    margin-top: 190px;
+}
+
+#nova{
+    font-size: 32px;
+    font-family: Arial, Helvetica, sans-serif;
+    border-style: hidden;
+    color: #0A3871;
+    width: 413px;
+    height: 48px;
+    font-weight: 400;
+    line-height: 150%;
+}
+
+#mcarac{
+    width: 150px;
+    height: 18px;
+    
+    font-family: 'Arial';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 150%;
+    margin-top: 240px;
+    margin-left: 270px;
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+}
+

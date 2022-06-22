@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="css\index.css" rel="stylesheet" type="text/css" />
+   
+    <title>Jogo da forca</title>
+</head>
+
+<body>
+    
+    
+    <figure>
+        <a href="https://www.alura.com.br/"><img id="alura" name="alura" src="img\Vector.png" alt="Alura" width="40px" height="60px"></a>
+    </figure>
+    
+    <canvas width="1" height="1"></canvas>
+
+    <div id="palNova" class="invisivel">
+        <input type="text" id="nova" placeholder="Digite uma nova palavra">
+    </div>
+
+    <div id="mcarac" class="invisivel">
+        <label id="carac">Máximo 8 letras</label>
+    </div>
+    <div id="bClicado" class="centralizar">
+        <input type="button" id="inJogo" class="botao" value="Iniciar jogo">
+        <input type="button" id="novPalavra" class="botao" value="Adicionar nova palavra">
+    </div>
+    
+
+
+    <div id="rodape" class="centralizar">
+        <footer>
+            Desenvolvimento front-end e back-end: Domingos Vanjo<br>
+            Siga-me: 
+            <figure>
+                <a href="https://github.com/domingosvanjo/JogoDaForca.git"><img src="icon\GitHub64px.png" alt="GitHub" width="30px"></a>
+                <a href="https://www.linkedin.com/in/domingosvanjo/"><img src="icon\linkedin preto.png" alt="Linkedin" width="30px"></a>
+            </figure>
+            
+            
+        </footer>
+    </div>
+</body>
+<script src="js\canvas.js"></script>
+<script src="js\palavraSecreta.js"></script>
+<script src="js\forca.js"></script>
+</html>
