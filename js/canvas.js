@@ -19,7 +19,6 @@ botInJogo.addEventListener('click', function(){
         
         if(VerifPalavra(input.value.toUpperCase())){
             pessoas.push(input.value.toUpperCase())
-            console.log(pessoas)
             botInJogo.value = 'Novo jogo';
             novaPalavra.value = 'Desistir';
             botInJogo.classList.add('botoes');
@@ -84,7 +83,6 @@ function VerifPalavra(palavra){
             for(var i=0; i < pessoas.length; i++){
                 if(pessoas[i] == palavra){
                     alert('Não foi possível inserir sua palavra porque ela já existe na lista. Escolha outra!')
-                    console.log(palavra)
                     return false
                 }
             }
@@ -97,9 +95,9 @@ function VerifPalavra(palavra){
 }
 
 document.body.addEventListener('keydown', function (e) {
-    const key = e.key;
+    
     const code = e.keyCode;
-    console.log(`Key: ${key}, Code ${code}`);
+   
     if(code > 16 && code < 19){
         caracEspec++;
     }else if(code > 47 && code < 58){

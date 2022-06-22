@@ -10,7 +10,6 @@ var fimJogo = false;
 function escolherPalSec(){
     var palavra = pessoas[Math.floor(Math.random()*pessoas.length)]
     palavraSecreta = palavra
-    console.log(palavra)
     return palavra
 }
 
