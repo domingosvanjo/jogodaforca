@@ -3,12 +3,18 @@ var tabuleiro = tela.getContext('2d');
 var botInJogo = document.querySelector('#inJogo');
 var novaPalavra = document.querySelector('#novPalavra');
 var rodape = document.querySelector("#rodape");
-var input = document.querySelector('#nova');
-var div = document.querySelector('#palNova')
+var input = document.querySelector('.nova');
+var divpalNova = document.querySelector('#palNova')
 var divLabel = document.querySelector("#mcarac")
 var caracEspec = 0;
 
-botInJogo.addEventListener('click', function(){
+var alturaTela = window. screen. height;
+var larguraTela = window. screen. width;
+
+console.log('altura ' + alturaTela)
+console.log('largura ' + larguraTela)
+
+botInJogo.addEventListener('click', function(){   //iniciar jogo e novo jogo
     if (botInJogo.value=='Iniciar jogo' || botInJogo.value == 'Novo jogo'){
         botInJogo.value = 'Novo jogo';
         novaPalavra.value = 'Desistir';
@@ -23,16 +29,18 @@ botInJogo.addEventListener('click', function(){
             novaPalavra.value = 'Desistir';
             botInJogo.classList.add('botoes');
             novaPalavra.classList.add('botoes');
-            inicJogo()
+            divpalNova.classList.add('invisivel')
+            divLabel.classList.add('invisivel')
+            inicJogo();
         }
     }
 })
 
-novaPalavra.addEventListener('click', function(){
+novaPalavra.addEventListener('click', function(){       //Adicionar nova palavra
     if (novaPalavra.value=='Adicionar nova palavra'){
         divLabel.classList.remove('invisivel')
-        div.classList.remove('invisivel')
-        div.classList.add('centrTudo')
+        divpalNova.classList.remove('invisivel')
+        divpalNova.classList.add('centrTudo')
 
         botInJogo.value = 'Salvar e começar';
         novaPalavra.value = 'Cancelar';
@@ -41,7 +49,7 @@ novaPalavra.addEventListener('click', function(){
 
     }else if(novaPalavra.value=='Cancelar' || novaPalavra.value=='Desistir'){
         divLabel.classList.add('invisivel')
-        div.classList.add('invisivel')
+        divpalNova.classList.add('invisivel')
         botInJogo.value = 'Iniciar jogo';
         novaPalavra.value = 'Adicionar nova palavra';
         botInJogo.classList.remove('botoes');
@@ -52,12 +60,14 @@ novaPalavra.addEventListener('click', function(){
 })
 
 function criarCanvas(){
+    var x = Math.floor(larguraTela*0.878);
+    var y = Math.floor(alturaTela*0.700);
     
-    tela.width=1200;
-    tela.height=660;
+    tela.width = x;
+    tela.height = y;
 
     tabuleiro.fillStyle = 'white';
-    tabuleiro.fillRect(90,0, 1200, 660);
+    tabuleiro.fillRect(0,0, x, y);
 }
 
 function inicJogo(){
@@ -67,8 +77,8 @@ function inicJogo(){
     erros = 0;
     palavraSecreta = "";
     fimJogo = false;
-    escreverTracos(escolherPalSec());
     desenhaForca(0);
+    escreverTracos(escolherPalSec());   
 }
 
 function VerifPalavra(palavra){

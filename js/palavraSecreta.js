@@ -1,11 +1,15 @@
 var pessoas = ['MATEUS','MIRELE','DOMINGOS','RAIMUNDO','DANIELA','RAIKELE','JACKESON','RONERSON','CARLINDO','JHONSON','ITAMAR','CREUZA','VALDEMIR','JOSELIA','FILIPI','PRETA'];
 
-var tabuleiro = document.querySelector('canvas').getContext('2d');
+var tela = document.querySelector('canvas');
+var tabuleiro = tela.getContext('2d');
 var letras = [];
 var palavraCorreta = "";
 var erros = 0;
 var palavraSecreta = "";
 var fimJogo = false;
+var x;
+var y;
+var eixo1;
 
 function escolherPalSec(){
     var palavra = pessoas[Math.floor(Math.random()*pessoas.length)]
@@ -14,15 +18,21 @@ function escolherPalSec(){
 }
 
 function escreverTracos(){
+    eixo1 = tela.width / 2
     tabuleiro.lineWidth = 6
     tabuleiro.lineCap = 'round'
     tabuleiro.lineJoin = "round"
     tabuleiro.strokeStyle = '#0A3871'
     tabuleiro.beginPath()
-    var eixo = 600/palavraSecreta.length
+    var eixo = Math.floor((tela.width/2)/palavraSecreta.length)
+    console.log(eixo1)
+    x = Math.floor(eixo1*0.834) //equivalente a 500 em tela de 1200 de largura
+    y = Math.floor(eixo1*0.750) //equivalente a 450 em tela de 1200 de largura
+    console.log('x ' + x)
+    console.log('y ' + y)
     for(var i = 0; i < palavraSecreta.length; i++){
-        tabuleiro.moveTo(500+(eixo*i),450)
-        tabuleiro.lineTo(550+(eixo*i),450)
+        tabuleiro.moveTo(x+(eixo*i), y)
+        tabuleiro.lineTo(x+(eixo1*0.083)+(eixo*i), y)
     }
     tabuleiro.stroke()
     tabuleiro.closePath()
@@ -31,14 +41,18 @@ function escreverTracos(){
 function letraCorreta(index){
     tabuleiro.font = 'bold 52px Arial'
     tabuleiro.fillStyle = '#0A3871'
-    var eixo = 600/palavraSecreta.length
-    tabuleiro.fillText(palavraSecreta[index],505+(eixo*index),440)
-   }
+    var eixo = Math.floor((tela.width/2)/palavraSecreta.length)
+    x = Math.floor(eixo1*0.842)
+    y = Math.floor(eixo1*0.733)
+    tabuleiro.fillText(palavraSecreta[index], x+(eixo*index), y)
+}
 
 function letraIncorreta(letra, errosLeft){
     tabuleiro.font = 'bold 40px Arial'
     tabuleiro.fillStyle = '#0A3871'
-    tabuleiro.fillText(letra, 535+(40*(errosLeft)),520,40)
+    x = Math.floor(eixo1*0.892)
+    y = Math.floor(eixo1*0.867)
+    tabuleiro.fillText(letra, x+((eixo1*0.066)*(errosLeft)), y, eixo1*0.066)
 }
 
 function verifLetraCorreta(key){
@@ -92,13 +106,17 @@ document.onkeydown=(e) => {
 function verifStatus(pCorreta, erros){
     tabuleiro.font = 'bold 52px Arial'
     if(pCorreta.length == palavraSecreta.length){
+        x = Math.floor(eixo1*1.444)
+        y = Math.floor(eixo1*0.333)
         tabuleiro.fillStyle = '#008000'
-        tabuleiro.fillText('Parabéns,',865,200)
-        tabuleiro.fillText('você venceu!',850,250)
+        tabuleiro.fillText('Parabéns,', x, y)
+        tabuleiro.fillText('você venceu!',eixo1*1.417, eixo1*0.417)
         fimJogo = true
     }else if(erros >= 9){
+        x = Math.floor(eixo1*1.442)
+        y = Math.floor(eixo1*0.400)
         tabuleiro.fillStyle = '#ff0000'
-        tabuleiro.fillText('Você perdeu!',865,240)
+        tabuleiro.fillText('Você perdeu!', x, y)
         fimJogo = true
     }
 }
