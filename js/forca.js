@@ -2,7 +2,7 @@ var tela = document.querySelector('canvas');
 var tabuleiro = tela.getContext('2d');
 
 function desenhaForca(parte){
-    if(alturaTela < 700){
+    if(larguraTela < 700){
         tabuleiro.lineWidth = 2
     }else{
         tabuleiro.lineWidth = 6
@@ -76,13 +76,13 @@ function desenhaForca(parte){
         x = Math.floor(eixo*0.250)
         tabuleiro.moveTo(eixo+x, y)
         tabuleiro.lineTo(eixo+(eixo*0.300), eixo*0.450)
-        if(alturaTela < 700){
+        if(larguraTela < 700){
             tabuleiro.font = 'bold 0.4em Arial'
         }else{
             tabuleiro.font = 'bold 1em Arial'
         }
         tabuleiro.fillStyle = '#ff0000'
-        if(alturaTela < 700){
+        if(larguraTela < 700){
             tabuleiro.fillText('o', eixo+(eixo*0.223),eixo*0.309)
             tabuleiro.fillText('o', eixo+(eixo*0.257),eixo*0.309)
         }else{
@@ -100,7 +100,7 @@ function desenhaCara(cor){
     y = Math.floor(eixo*0.300)
     x = Math.floor(eixo*0.233)
 
-    if(alturaTela < 700){
+    if(larguraTela < 700){
         tabuleiro.lineWidth = 1
     }else{
         tabuleiro.lineWidth = 3

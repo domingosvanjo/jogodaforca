@@ -11,6 +11,7 @@ var x;
 var y;
 var eixo1;
 var alturaTela = window. screen. height;
+var larguraTela = window. screen. width;
 
 function escolherPalSec(){
     var palavra = pessoas[Math.floor(Math.random()*pessoas.length)]
@@ -20,7 +21,7 @@ function escolherPalSec(){
 
 function escreverTracos(){
     eixo1 = tela.width / 2
-    if(alturaTela < 700){
+    if(larguraTela < 700){
         tabuleiro.lineWidth = 2
     }else{
         tabuleiro.lineWidth = 6
@@ -43,7 +44,7 @@ function escreverTracos(){
 }
 
 function letraCorreta(index){
-    if(alturaTela < 700){
+    if(larguraTela < 700){
         tabuleiro.font = 'bold 1.2em Arial'
     }else{
         tabuleiro.font = 'bold 3em Arial'
@@ -56,7 +57,7 @@ function letraCorreta(index){
 }
 
 function letraIncorreta(letra, errosLeft){
-    if(alturaTela < 700){
+    if(larguraTela < 700){
         tabuleiro.font = 'bold 1em Arial'
     }else{
         tabuleiro.font = 'bold 2.5em Arial'
@@ -116,7 +117,7 @@ document.onkeydown=(e) => {
 }
 
 function verifStatus(pCorreta, erros){
-    if(alturaTela < 700){
+    if(larguraTela < 700){
         tabuleiro.font = 'bold 0.8em Arial'
     }else{
         tabuleiro.font = 'bold 3em Arial'

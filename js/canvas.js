@@ -17,7 +17,7 @@ var alturaTela = window. screen. height;
 var larguraTela = window. screen. width;
 
 tela.addEventListener('click',function(){
-    if(alturaTela < 700){
+    if(larguraTela < 700){
         inputMob.focus()
     }
 })
@@ -77,8 +77,7 @@ novaPalavra.addEventListener('click', function(){       //Adicionar nova palavra
 
 function criarCanvas(){
     x = Math.floor(larguraTela*0.878);
-    
-    
+        
     tela.width = x;
     tela.height = y;
 
@@ -87,7 +86,7 @@ function criarCanvas(){
 }
 
 function verifMobile(){
-    if(alturaTela < 700){
+    if(larguraTela < 700){
         y = Math.floor(alturaTela*0.599);
         divMobile.classList.remove('invisivel')
         inputMob.focus()
