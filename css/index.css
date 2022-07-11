@@ -1,23 +1,23 @@
  .botao{
-    border-radius: 24px;
+    border-radius: 1.5em;
     margin: 0 auto;
     flex-grow: 1;
     display: block;
-    margin-top: 110px;
-        
-    border: 1px solid #0a66d6;
+    margin-top: 8em;
+    font-size: medium;    
+    border: 0.1em solid #0a66d6;
     box-sizing: border-box;
        
     justify-content: center;
-    width: 317px;
-    height: 105px;    
+    width: 17rem;
+    height: 7rem;    
 }
 
 #inJogo{
     background: #0A3871;
     color: white;
     order: 0;
-    font-size: medium;
+    
     right: 30%;
     left: 0%;
 }
@@ -31,8 +31,8 @@
 }
 
 .botoes{
-    width: 332px;
-    height: 67px;
+    width: 16rem;
+    height: 4.18rem;
      
     align-items: flex-start;
     display:inline;
@@ -71,6 +71,10 @@
     line-height: 150%;
 }
 
+.nova:focus{
+    outline-offset: -35px;
+}
+
 #mcarac{
     width: 150px;
     height: 18px;
@@ -95,6 +99,41 @@
     padding-top: 3%;
 }
 
+.textmobile{
+    position: absolute;
+    display:inline;
+    top: 30%;
+    left: 15%;
+    border-color: transparent;
+    color: red;    
+}
+
+.textmobile:focus{
+    outline-offset: -13px;
+}
+
+
+#escolha{
+    position: absolute;
+    top: 3%;
+    left: 10%;
+    
+}
+
+legend{
+    display: inline;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 2em;
+    color: #0A3871;
+}
+
+select{
+    display: inline-block;
+    border: transparent;
+    color: #0A3871;
+    font-size: 1em;
+}
+
 @media screen and (max-width: 480px){
     .nova{
         font-size: 20px;
@@ -103,12 +142,20 @@
     }  
     .botoes{
         display: block;
-        margin: 10px;
-        margin-left: 8%;
+        margin: 0 auto;
+        margin-bottom: 3%;
+        
     }
 
+    #escolha{
+        top: 40%;
+    }
+
+    legend{
+        font-size: 1em;
+    }
 
     #rodape{
-        padding-top: 10%;
+        padding-top: 5%;
     }
 }

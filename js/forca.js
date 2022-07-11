@@ -2,7 +2,11 @@ var tela = document.querySelector('canvas');
 var tabuleiro = tela.getContext('2d');
 
 function desenhaForca(parte){
-    tabuleiro.lineWidth = 6
+    if(alturaTela < 700){
+        tabuleiro.lineWidth = 2
+    }else{
+        tabuleiro.lineWidth = 6
+    }
     tabuleiro.lineCap = 'round'
     tabuleiro.lineJoin = "round"
     tabuleiro.strokeStyle = '#0A3871'
@@ -33,12 +37,12 @@ function desenhaForca(parte){
         y = Math.floor(eixo*0.166)
         x = Math.floor(eixo*0.250)
         tabuleiro.moveTo(eixo+x, y)
-        tabuleiro.lineTo(eixo+x, x+10)
+        tabuleiro.lineTo(eixo+x, x+5)
 
     }else if(parte == 4){  //cabeça
-        y = Math.floor(eixo*0.316)
-        x = Math.floor(eixo*0.250)
-        tabuleiro.arc(eixo+x, y,30,0,2*3.14)
+        y = Math.floor(eixo*0.316)  //189
+        x = Math.floor(eixo*0.250)  //749
+        tabuleiro.arc(eixo+x, y, eixo*0.050,0,2*3.14)
         tabuleiro.stroke()
         tabuleiro.closePath()
         desenhaCara('#0A3871')
@@ -72,11 +76,19 @@ function desenhaForca(parte){
         x = Math.floor(eixo*0.250)
         tabuleiro.moveTo(eixo+x, y)
         tabuleiro.lineTo(eixo+(eixo*0.300), eixo*0.450)
-        tabuleiro.font = 'bold 25px Arial'
-        //desenhaCara('white')
-        tabuleiro.fillText('x', eixo+(eixo*0.221),eixo*0.311)
-        tabuleiro.fillText('x', eixo+(eixo*0.255),eixo*0.311)
-        //tabuleiro.fillText('x', eixo+143,206)
+        if(alturaTela < 700){
+            tabuleiro.font = 'bold 0.4em Arial'
+        }else{
+            tabuleiro.font = 'bold 1em Arial'
+        }
+        tabuleiro.fillStyle = '#ff0000'
+        if(alturaTela < 700){
+            tabuleiro.fillText('o', eixo+(eixo*0.223),eixo*0.309)
+            tabuleiro.fillText('o', eixo+(eixo*0.257),eixo*0.309)
+        }else{
+            tabuleiro.fillText('O', eixo+(eixo*0.223),eixo*0.309)
+            tabuleiro.fillText('O', eixo+(eixo*0.257),eixo*0.309)
+        }
     }
     tabuleiro.stroke()
     tabuleiro.closePath()
@@ -84,17 +96,22 @@ function desenhaForca(parte){
 }
 
 function desenhaCara(cor){
+    var eixo = tela.width/2
     y = Math.floor(eixo*0.300)
     x = Math.floor(eixo*0.233)
-    tabuleiro.lineWidth = 3
-    var eixo = tela.width/2
+
+    if(alturaTela < 700){
+        tabuleiro.lineWidth = 1
+    }else{
+        tabuleiro.lineWidth = 3
+    }
     tabuleiro.strokeStyle = cor
     tabuleiro.beginPath()
-    tabuleiro.arc(eixo+x, y, 5, 0, 2*3.14)
+    tabuleiro.arc(eixo+x, y, eixo*0.008, 0, 2*3.14)
     tabuleiro.stroke()
     tabuleiro.closePath()
     tabuleiro.beginPath()
-    tabuleiro.arc(eixo+(eixo*0.266), y, 5, 0, 2*3.14)
+    tabuleiro.arc(eixo+(eixo*0.266), y, eixo*0.008, 0, 2*3.14)
     tabuleiro.stroke()
     tabuleiro.closePath()
     tabuleiro.beginPath()

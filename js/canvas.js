@@ -6,13 +6,21 @@ var rodape = document.querySelector("#rodape");
 var input = document.querySelector('.nova');
 var divpalNova = document.querySelector('#palNova')
 var divLabel = document.querySelector("#mcarac")
+var divMobile = document.querySelector("#mobile")
+var inputMob = document.querySelector('.textmobile')
+var escolha = document.querySelector('#escolha')
 var caracEspec = 0;
+var x
+var y
 
 var alturaTela = window. screen. height;
 var larguraTela = window. screen. width;
 
-console.log('altura ' + alturaTela)
-console.log('largura ' + larguraTela)
+tela.addEventListener('click',function(){
+    if(alturaTela < 700){
+        inputMob.focus()
+    }
+})
 
 botInJogo.addEventListener('click', function(){   //iniciar jogo e novo jogo
     if (botInJogo.value=='Iniciar jogo' || botInJogo.value == 'Novo jogo'){
@@ -20,6 +28,8 @@ botInJogo.addEventListener('click', function(){   //iniciar jogo e novo jogo
         novaPalavra.value = 'Desistir';
         botInJogo.classList.add('botoes');
         novaPalavra.classList.add('botoes');
+        escolha.classList.remove('invisivel');
+        inputMob.textContent=""
         inicJogo();
     }else if (botInJogo.value=='Salvar e começar'){
         
@@ -31,6 +41,7 @@ botInJogo.addEventListener('click', function(){   //iniciar jogo e novo jogo
             novaPalavra.classList.add('botoes');
             divpalNova.classList.add('invisivel')
             divLabel.classList.add('invisivel')
+            escolha.classList.remove('invisivel')
             inicJogo();
         }
     }
@@ -41,42 +52,59 @@ novaPalavra.addEventListener('click', function(){       //Adicionar nova palavra
         divLabel.classList.remove('invisivel')
         divpalNova.classList.remove('invisivel')
         divpalNova.classList.add('centrTudo')
-
+        input.focus()
         botInJogo.value = 'Salvar e começar';
         novaPalavra.value = 'Cancelar';
         botInJogo.classList.add('botoes');
         novaPalavra.classList.add('botoes');
+        
 
     }else if(novaPalavra.value=='Cancelar' || novaPalavra.value=='Desistir'){
         divLabel.classList.add('invisivel')
         divpalNova.classList.add('invisivel')
+        divMobile.classList.add('invisivel')
         botInJogo.value = 'Iniciar jogo';
         novaPalavra.value = 'Adicionar nova palavra';
         botInJogo.classList.remove('botoes');
         novaPalavra.classList.remove('botoes');
+        escolha.classList.add('invisivel');
         tela.width=1;
         tela.height=1;
     }
 })
 
+
+
 function criarCanvas(){
-    var x = Math.floor(larguraTela*0.878);
-    var y = Math.floor(alturaTela*0.700);
+    x = Math.floor(larguraTela*0.878);
+    
     
     tela.width = x;
     tela.height = y;
 
-    tabuleiro.fillStyle = 'white';
-    tabuleiro.fillRect(0,0, x, y);
+    tabuleiro.fillStyle = '#ffffff';
+    tabuleiro.fillRect(20,0, x, y);
+}
+
+function verifMobile(){
+    if(alturaTela < 700){
+        y = Math.floor(alturaTela*0.599);
+        divMobile.classList.remove('invisivel')
+        inputMob.focus()
+    }else{
+        y = Math.floor(alturaTela*0.700);
+    }
 }
 
 function inicJogo(){
+    verifMobile();
     criarCanvas();
     letras = [];
     palavraCorreta = "";
     erros = 0;
     palavraSecreta = "";
     fimJogo = false;
+   
     desenhaForca(0);
     escreverTracos(escolherPalSec());   
 }

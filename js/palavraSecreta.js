@@ -10,6 +10,7 @@ var fimJogo = false;
 var x;
 var y;
 var eixo1;
+var alturaTela = window. screen. height;
 
 function escolherPalSec(){
     var palavra = pessoas[Math.floor(Math.random()*pessoas.length)]
@@ -19,17 +20,20 @@ function escolherPalSec(){
 
 function escreverTracos(){
     eixo1 = tela.width / 2
-    tabuleiro.lineWidth = 6
+    if(alturaTela < 700){
+        tabuleiro.lineWidth = 2
+    }else{
+        tabuleiro.lineWidth = 6
+    }
     tabuleiro.lineCap = 'round'
     tabuleiro.lineJoin = "round"
     tabuleiro.strokeStyle = '#0A3871'
     tabuleiro.beginPath()
     var eixo = Math.floor((tela.width/2)/palavraSecreta.length)
-    console.log(eixo1)
+    
     x = Math.floor(eixo1*0.834) //equivalente a 500 em tela de 1200 de largura
     y = Math.floor(eixo1*0.750) //equivalente a 450 em tela de 1200 de largura
-    console.log('x ' + x)
-    console.log('y ' + y)
+    
     for(var i = 0; i < palavraSecreta.length; i++){
         tabuleiro.moveTo(x+(eixo*i), y)
         tabuleiro.lineTo(x+(eixo1*0.083)+(eixo*i), y)
@@ -39,7 +43,11 @@ function escreverTracos(){
 }
 
 function letraCorreta(index){
-    tabuleiro.font = 'bold 52px Arial'
+    if(alturaTela < 700){
+        tabuleiro.font = 'bold 1.2em Arial'
+    }else{
+        tabuleiro.font = 'bold 3em Arial'
+    }
     tabuleiro.fillStyle = '#0A3871'
     var eixo = Math.floor((tela.width/2)/palavraSecreta.length)
     x = Math.floor(eixo1*0.842)
@@ -48,7 +56,11 @@ function letraCorreta(index){
 }
 
 function letraIncorreta(letra, errosLeft){
-    tabuleiro.font = 'bold 40px Arial'
+    if(alturaTela < 700){
+        tabuleiro.font = 'bold 1em Arial'
+    }else{
+        tabuleiro.font = 'bold 2.5em Arial'
+    }
     tabuleiro.fillStyle = '#0A3871'
     x = Math.floor(eixo1*0.892)
     y = Math.floor(eixo1*0.867)
@@ -104,7 +116,11 @@ document.onkeydown=(e) => {
 }
 
 function verifStatus(pCorreta, erros){
-    tabuleiro.font = 'bold 52px Arial'
+    if(alturaTela < 700){
+        tabuleiro.font = 'bold 0.8em Arial'
+    }else{
+        tabuleiro.font = 'bold 3em Arial'
+    }
     if(pCorreta.length == palavraSecreta.length){
         x = Math.floor(eixo1*1.444)
         y = Math.floor(eixo1*0.333)
